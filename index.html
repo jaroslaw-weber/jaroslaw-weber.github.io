@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Jaroslaw Weber</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Harmattan" rel="stylesheet">
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+	<style>
+		body {
+			font-family: 'Harmattan', sans-serif;
+		}
+
+		.title {
+			font-family: 'Megrim', cursive;
+			text-align: right;
+			
+		}
+
+		.onelink {
+
+			border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
+			width: 2em;
+			height: 2em;
+		}
+
+		.circle {
+			border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
+			width: 9em;
+			height:9em;
+			box-shadow: .5em .5em 1.2em 0 rgba(0, 0, 0, 0.3);
+			object-fit: cover;
+			text-align: center;
+		}
+
+		@keyframes bigger{
+  from {  transform: scale(1);}
+  to {  transform: scale(1.8);}
+}
+.hoveranim:hover,
+.hoveranim:focus,
+.hoveranim:active {
+  
+	animation-name: rubberBand;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  }
+		.one-item {
+			margin: 3em;
+		}
+	</style>
+</head>
+
+<body>
+	<section class="section">
+		<div class="container">
+			<div id="app">
+				<div v-for="item in list">
+					<circlet :item=item></circlet>
+				</div>
+			</div>
+			<hr>
+			Photos used in portfolio are not mine, for contribution info check this<a href="https://unsplash.com/collections/4790202/portfolio">Unsplash Collection</a>. 
+
+
+
+			<script>
+				let work = [
+					{
+						title: "Improved remote debug system",
+						desc: `With sparse stacktrace, I was able to improve debugging in release environment,
+					 by adding various debug trackers (opened windows, bug count). With new system we could focus on the most important bugs first. 
+					Number of exceptions was decreasing greatly in consequent releases.
+					`}, {
+						title: "Proposed a workaround for browser related bug",
+						desc: `There was a bug which prevented playing game in Chrome browser. 
+					After some research I found that turning of "hardware acceleration" was also disabling webgl and consequently producing black screen. I proposed a workaround: 
+					detecting if browser can use webgl and show appropiate message to the user.`}, {
+						title: "Delegating work to younger coworkers",
+						desc: `I delegated work to younger and less experienced coworkers with tips how they can solve the problem. I was also supervising their progress and give them hints if they seemed stuck. I reviewed their work and gave them feedback on code quality.`
+					}, {
+						title: "Improving overall system reliabilty",
+						desc: `I improved system stability by implementing few helper extension methods. C# main pain points are Null Exception and Out of Range exceptions. I borrowed few concepts from Rust (iterating, options) and implemented similar functions in C#. In result, code became more reliable, and in lot of cases shorter and easier to read. For example, I implemented .IterateWithIndex function, which is similar to foreach loop but with additional index passing. It is safer than for loop and easier to write.`
+					}, {
+						title: "Developing network error handling system",
+						desc: `Designed workaround for failing to download assets and proposed which assets should have retry option and which not. Improved overall reliability and user experience.`
+					}, {
+						title: "Decrease app size",
+						desc: `3 mb -> 100 kb per asset bundle decrease (total app size decrease about 60mb), by creating dependency bundle for common fonts`
+					}, {
+						title: "Fixed difficult bug appearing only in webgl build",
+						desc: `After some testing I discovered that too many requests (at the same time) to asset bundle manager was making game crash, but only on webgl. Implemented request queue and fixed the problem.`
+					}, {
+						title: "Improved in-house library",
+						desc: `Sent bug reports and improvement plans for in-house library`
+					}, {
+						title: "Created useful tools",
+						desc: `Implemented tools for searching missing components/references.`
+					}, {
+						title: "Improved performance of list and fixed bugs in the implementation (Unity)",
+						desc: `Reusing elements for long lists is a way to create long lists faster, but it is not enough to reuse the elements. I improved performance by implementing request queue and introduced new canceling implementation. I also found a bug which was caused by autounloading the icon textures from asset bundle. I also implemented custom reference counting for unloading textures.`
+					},{
+						title: "Implemented custom csv parser",
+						desc: `Implemented csv parser compatibile with old c# version (available versions were not working with old c#)`
+					},{
+						title: "Improved json parsing speed",
+						desc: `Instead of using reflection, implemented code generation which improved the parsing performance.`
+					},
+
+				];
+				let workRendered = "";
+				work.forEach(x => {
+					const rendered = `
+					<p><strong>${x.title}</strong></p>
+					<p>${x.desc}</p>
+					<br>
+					`;
+					workRendered += rendered;
+				});
+				var list = [
+					{
+						id: "poland",
+						img: "poland.jpg",
+						title: "About Me",
+						desc: `My name is Jaroslaw Weber. I am a Polish game and software developer. I live in Tokyo and work at DMM Games. `,
+						more:`
+						<a href="https://games.dmm.com/en/">website of my current company</a>
+						`
+						
+					},
+					{
+						id: "unity",
+						img: "unity.jpg",
+						title: "Unity3D",
+						desc: `I develop games using C# and
+					Unity3D engine. I have four years of professional experience. `
+
+					},
+					{
+						id: "circlet",
+						img: "circlet.jpg",
+						title: "Circlet Princess",
+						desc: `My most recent project is a social game called Circlet Princess. Along with game, an animation starring game characters was also released.`,
+						more: `
+						<a href="http://games.dmm.com/en/detail/circlet_princess/">link to the game</a>
+						<br><br>
+						<a href="https://cirpri-anime.jp/">link to the anime website</a>
+						`
+						
+					},
+					{
+						id: "japan",
+						img: "japan.jpg",
+						title: "Japanese",
+						desc: `I've been working in Japan for four years now. I started learning Japanese about seven years ago and I'm fluent in it. I work mostly with Japanese people and communicate almost always in Japanese `
+					},
+					{
+						id: "library",
+						img: "library.jpg",
+						title: "Scholarship",
+						desc: `I received a 1-year MEXT scholarship and attended Tohoku University `,
+					more: `<a href="https://en.wikipedia.org/wiki/Monbukagakusho_Scholarship">about the scholarship</a>`
+					},
+					{
+						id: "certificate",
+						img: "certificate.jpg",
+						title: "Certificates",
+						desc: `I have obtained a certificate in " Bits and Bytes of
+					Computer Networking from Google".`,
+					more:`my certificates:
+					<br><a href="https://www.coursera.org/account/accomplishments/certificate/NJ8U878PSCNC">The Bits and Bytes of Computer Networking by Google</a>`
+					},
+					{
+						id: "webdev",
+						img: "vue.jpg",
+						title: "Web Dev",
+						desc: `I've created a few small websites. Recently using Vue js and I am impressed with its simplicity and the speed with which it helps create a website. `,
+						links: [],
+						more: `
+						<a href="https://fishlang.github.io/">language learning website</a>
+						<br><br>
+						<a href="https://jaroslaw-weber.github.io/gobofjs/">positional tracking in browser, using computer vision</a>
+						`
+					},
+					{
+						id: "growth.jpg",
+						img: "growth.jpg",
+						title: "Work Achievements",
+						desc: `I have improved both performance and reliability in my work projects.  `,
+						links: [],
+						more: workRendered
+
+
+					},
+					{
+						id: "opensource",
+						img: "github.jpg",
+						title: "Open Source",
+						desc: `I am interested in technology and pursue new knowledge at all times. On my own, I created a few small projects and contributed to a few open source projects. I respect the OS community because it has provided great tools for developers, such as VS Code or Tensorflow. `,
+						more: "<a href='https://github.com/jaroslaw-weber/'>my side projects on github</a>"
+					},
+					{
+						id: "blog",
+						img: "notes.jpg",
+						title: "Technical Blog",
+						desc: `I created a technical blog to summarize what I learned when working on my side projects or in my day-to-day work. I also focus on sharing knowledge with my colleagues, creating technical knowledge documentation and thus enhancing the skills of the entire team.`,
+						links: [],
+
+						more: "<a href='https://jaroslaw-weber.github.io/blog/'>link to my blog</a>"
+					},
+					{
+						id: "vr",
+						img: "vr.jpg",
+						title: "Virtual Reality",
+						desc: `I developed positional tracking in browser (for use with mobile VR headsets). To achieve low latency and high performance, I used Open CV and Web assembly. I also recently bought an Oculus Go, mobile VR headset. `,
+						more:`<a href="https://jaroslaw-weber.github.io/gobofjs/">positional tracking in browser, using computer vision</a>`
+					},
+					{
+						id: "hunger",
+						img: "hunger.jpg",
+						title: "Hunger",
+						desc: `I believe it's very important to have a purpose. I was also very fortunate that I could achieve financial stability. I know not everyone has had the same luck and I'm contributing to the World Food Programme. I donated meals worth over a year to those in need. `,
+						links: []
+					},
+					{
+						id: "forest",
+						img: "forest.jpg",
+						title: "Environment",
+						desc: `I also support Cool Earth, a rainforest protection organisation. My donations helped to protect more than 150 trees. `,
+					more:`<a href="https://www.coolearth.org/profiles/jaroslaw/">my donations</a>`
+					},
+					{
+						id: "robot",
+						img: "robot.jpg",
+						title: "Machine Learning",
+						desc: `I have always been interested in future technologies and in some hobby projects I have even used machine learning. I have a basic knowledge about practical use of tensorfow, machine learning in cloud, data analysis in python. `,
+						links: [],
+						more: `<a href='https://github.com/jaroslaw-weber/hotdog-not-hotdog'>image recognition with simple web interface</a><br><br>
+						<a href='https://github.com/jaroslaw-weber/photo2stereo'>converting 2d images to stereo 3d images</a>
+						
+						`
+					},
+					{
+						id: "handshake",
+						img: "handshake.jpg",
+						title: "Contact",
+						desc: `Contact me by email if you are interested in my skills and experience in more detail <br><br> <a href="mailto:jaroslawweber@gmail.com">jaroslawweber@gmail.com</a>`,
+						links: []
+					},
+					{
+						id: "english",
+						img: "english.jpg",
+						title: "English",
+						desc: `I am native Polish speaker but nowadays I use mostly English to acquire new knowledge. A few years ago I took a TOEIC test and I got a score of 98 percent so I think I'm pretty fluent. I also had few English-speaking colleagues in the past and I can communicate in English without much trouble. `,
+						links: []
+					},
+					{
+						id: "korea",
+						img: "korea.jpg",
+						title: "Korean",
+						desc: `I can speak very simple Korean. I have been few times in Korea, traveling.`,
+						links: []
+					},
+					{
+						id: "chinese",
+						img: "chinese.jpg",
+						title: "Chinese",
+						desc: `I spent six months living and working in China (Hefei). I spoke mostly in English, but I learned a few words of Chinese. `,
+						links: []
+					}
+				];
+				var circle = Vue.component('circlet', {
+					props: ["item"],
+					data: function () {
+						return {
+							moreVisible: false
+						}
+					},
+					template: `
+					
+
+<div class="columns one-item">
+
+	<div class="column">
+		<img :src=item.img class="circle hoveranim"　 @click="moreVisible=true" data-aos="zoom-in">
+	</div>
+	<div class="column is-two-thirds"　 data-aos="fade-in">
+		<p class="title">{{item.title}}</p>
+		<p><span v-html="item.desc"></span><p>
+		<div v-if=item.more>
+			<br><br>
+			<div v-if=moreVisible  class="animated zoomInLeft">
+					<span v-html="item.more"></span>
+			</div>
+			<div v-else @click="moreVisible=true">
+				<a><img src="help-circle.svg" class="hoveranim"></a>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>`
+				});
+				var app = new Vue({
+					el: '#app',
+					data: {
+						list: list
+
+					},
+					mounted() {
+						AOS.init();
+					}
+				});
+			</script>
+
+		</div>
+	</section>
+</body>
+
+</html>
