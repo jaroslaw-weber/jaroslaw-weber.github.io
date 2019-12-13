@@ -34,11 +34,13 @@
 
 		.circle {
 			border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
-			width: 9em;
-			height: 9em;
 			box-shadow: .5em .5em 1.2em 0 rgba(0, 0, 0, 0.3);
 			object-fit: cover;
-			text-align: center;
+
+		}
+
+		.margin {
+			margin: 2rem;
 		}
 
 		@keyframes bigger {
@@ -143,7 +145,7 @@
 						Last few years I spend in Asia, polishing and improving my skills. 
 Currently living in Tokyo and working at DMM GAMES.
 						Found more about me below and contact me if you are interested.`,
-					
+
 
 					},
 					{
@@ -289,11 +291,16 @@ Currently living in Tokyo and working at DMM GAMES.
 <div class="columns one-item">
 
 	<div class="column">
+	<div class="margin">
+		<div class="image is-square">
+		
 		<img :src=item.img class="circle hoveranim"　 @click="moreVisible=true" data-aos="zoom-in">
+		</div>
+		</div>
 	</div>
 	<div class="column is-two-thirds"　 data-aos="fade-in">
 		<p class="title">{{item.title}}</p>
-		<p><span v-html="item.desc"></span><p>
+		<p class="text"><span v-html="item.desc"></span><p>
 		<div v-if=item.more>
 			<br><br>
 			<div v-if=moreVisible  class="animated zoomInLeft">
