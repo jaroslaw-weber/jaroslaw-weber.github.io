@@ -16,20 +16,23 @@
 
 	<style>
 		body {
-			font-family: 'Harmattan', sans-serif;
-			font-size: 1.5rem;
+			/*font-family: 'Harmattan', sans-serif;*/
 		}
 
 		.text {
-			margin: 3rem;
+			font-size:1rem;
+			
 		}
 
 		.title {
 			font-family: 'Megrim', cursive;
-			font-size: 3rem;
-			text-align: right;
-			margin: 2rem;
+			font-size: 2rem;
 
+		}
+
+		.verticalcenter
+		{
+			vertical-align:middle;
 		}
 
 		.onelink {
@@ -48,7 +51,8 @@
 		}
 
 		.margin {
-			margin: 1rem;
+			margin:2rem;
+			
 		}
 
 		@keyframes bigger {
@@ -71,7 +75,6 @@
 		}
 
 		.one-item {
-			margin: 3em;
 		}
 	</style>
 </head>
@@ -143,7 +146,7 @@
 				var list = [
 					{
 						id: "poland",
-						img: "poland.jpg",
+						img: "top.jpg",
 						title: "About Me",
 						desc: `
 						My name is Jaroslaw Weber, and I’m a developer from Poland. 
@@ -308,9 +311,9 @@ Currently living in Tokyo and working at DMM GAMES.
 			</div>
 		</div>
 	</div>
-	<div class="column is-two-thirds"　 data-aos="fade-in">
+	<div class="column is-two-thirds verticalcenter"　 data-aos="fade-in">
 		<p class="title">{{item.title}}</p>
-		<p class="text"><span v-html="item.desc"></span><p>
+		<p class="text" v-html="item.desc"><p>
 		<div v-if=item.more>
 			<br><br>
 			<div v-if=moreVisible  class="animated zoomInLeft">
