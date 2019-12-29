@@ -1,136 +1,142 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jaroslaw Weber</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Megrim"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Harmattan"
+      rel="stylesheet"
+    />
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Jaroslaw Weber</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Megrim" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Harmattan" rel="stylesheet">
-	<!-- development version, includes helpful console warnings -->
-	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    <style>
+      body {
+        /*font-family: 'Harmattan', sans-serif;*/
+      }
 
-	<style>
-		body {
-			/*font-family: 'Harmattan', sans-serif;*/
-		}
+      .text {
+        font-size: 1rem;
+      }
 
-		.text {
-			font-size: 1rem;
+      .title {
+        font-family: "Megrim", cursive;
+        font-size: 2rem;
+      }
 
-		}
+      .verticalcenter {
+        vertical-align: middle;
+      }
 
-		.title {
+      .onelink {
+        border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
+        width: 2em;
+        height: 2em;
+      }
 
-			font-family: 'Megrim', cursive;
-			font-size: 2rem;
+      .one-item {
+        margin-bottom: 2rem !important;
+      }
 
-		}
+      .circle {
+        border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
+        box-shadow: 0.5em 0.5em 1.2em 0 rgba(0, 0, 0, 0.3);
+        object-fit: cover;
+      }
 
-		.verticalcenter {
-			vertical-align: middle;
-		}
+      .margin {
+        margin: 2rem;
+      }
+    </style>
+  </head>
 
-		.onelink {
+  <body>
+    <section class="section">
+      <div class="container">
+        <div id="app">
+          <div v-for="item in list">
+            <circlet :item="item"></circlet>
+          </div>
+        </div>
+        <hr />
+        Photos used in portfolio are not mine, for contribution info check
+        this<a href="https://unsplash.com/collections/4790202/portfolio"
+          >Unsplash Collection</a
+        >.
 
-			border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
-			width: 2em;
-			height: 2em;
-		}
+        <script>
+          let work = [
+            {
+              title: "Popular mobile game",
+              desc:
+                "Released a game which have currently over 80 000 daily active users."
+            },
+            {
+              title: "Decrease bundle size",
+              desc: `3 mb -> 100 kb per asset bundle decrease (total app size decrease was over 50mb), by creating dependency bundle for common fonts`
+            },
+            {
+              title: "Improved performance - sorting algorithm",
+              desc:
+                "The game I was working on had a performance issue which caused screen freezing for few seconds when opened. After some debugging, I have discovered that sorting algorithm was parsing same dates multiple times. By caching parsing result, the loading times decreased from few seconds to miliseconds."
+            },
+            {
+              title: "Added remote error reporting",
+              desc: `After adding detailed error reporting my team was able to fix all major bugs before release.`
+            },
+            {
+              title: "Improving overall system reliabilty",
+              desc: `I improved system stability by implementing few helper extension methods. C# main pain points are Null Exception and Out of Range exceptions. I borrowed few concepts from Rust (iterating, options) and implemented similar functions in C#. In result, code became more reliable, and in lot of cases shorter and easier to read. For example, I implemented .IterateWithIndex function, which is similar to foreach loop but with additional index passing. It is safer than for loop and easier to write.`
+            },
+            {
+              title: "Wrote network error handling system",
+              desc: `Mobile connections are often unstable. I have prepared the game for unexpected network errors, added retry download system and decided and implemented error handling. It resulted in better user experience when playing game with unstable network enviroments.`
+            },
+            {
+              title: "Fixed difficult bug appearing only in webgl",
+              desc: `Game was crashing in webgl build but was working well on other platforms (android). After some testing I have discovered that it was memory related problem. Webgl is known for its limited memory capacity and trying to download multiple assets at the same time resulted in crash. I have developed restriction queue algorithm for downloads which eliminated crashing completely.`
+            },
 
-		.one-item {
-			margin-bottom: 2rem !important;
-		}
-
-		.circle {
-			border-radius: 38% 62% 33% 67% / 62% 35% 65% 38%;
-			box-shadow: .5em .5em 1.2em 0 rgba(0, 0, 0, 0.3);
-			object-fit: cover;
-
-
-		}
-
-		.margin {
-			margin: 2rem;
-
-		}
-	</style>
-</head>
-
-<body>
-	<section class="section">
-		<div class="container">
-			<div id="app">
-				<div v-for="item in list">
-					<circlet :item=item></circlet>
-				</div>
-			</div>
-			<hr>
-			Photos used in portfolio are not mine, for contribution info check this<a
-				href="https://unsplash.com/collections/4790202/portfolio">Unsplash Collection</a>.
-
-
-
-			<script>
-				let work = [
-					{
-						title: "Improved remote debug system",
-						desc: `With sparse stacktrace, I was able to improve debugging in release environment,
-					 by adding various debug trackers (opened windows, bug count). With new system we could focus on the most important bugs first. 
-					Number of exceptions was decreasing greatly in consequent releases.
-					`},
-					{
-						title: "Delegating work to younger coworkers",
-						desc: `I delegated work to younger and less experienced coworkers with tips how they can solve the problem. I was also supervising their progress and give them hints if they seemed stuck. I reviewed their work and gave them feedback on code quality.`
-					}, {
-						title: "Improving overall system reliabilty",
-						desc: `I improved system stability by implementing few helper extension methods. C# main pain points are Null Exception and Out of Range exceptions. I borrowed few concepts from Rust (iterating, options) and implemented similar functions in C#. In result, code became more reliable, and in lot of cases shorter and easier to read. For example, I implemented .IterateWithIndex function, which is similar to foreach loop but with additional index passing. It is safer than for loop and easier to write.`
-					}, {
-						title: "Developing network error handling system",
-						desc: `Designed workaround for failing to download assets and proposed which assets should have retry option and which not. Improved overall reliability and user experience.`
-					}, {
-						title: "Decrease app size",
-						desc: `3 mb -> 100 kb per asset bundle decrease (total app size decrease about 60mb), by creating dependency bundle for common fonts`
-					}, {
-						title: "Fixed difficult bug appearing only in webgl build",
-						desc: `After some testing I discovered that too many requests (at the same time) to asset bundle manager was making game crash, but only on webgl. Implemented request queue and fixed the problem.`
-					}, {
-						title: "Improved in-house library",
-						desc: `Sent bug reports and improvement plans for in-house library`
-					}, {
-						title: "Created useful tools",
-						desc: `Implemented tools for searching missing components/references.`
-					}, {
-						title: "Improved performance of list and fixed bugs in the implementation (Unity)",
-						desc: `Reusing elements for long lists is a way to create long lists faster, but it is not enough to reuse the elements. I improved performance by implementing request queue and introduced new canceling implementation. I also found a bug which was caused by autounloading the icon textures from asset bundle. I also implemented custom reference counting for unloading textures.`
-					}, {
-						title: "Implemented custom csv parser",
-						desc: `Implemented csv parser compatibile with old c# version (available versions were not working with old c#)`
-					}, {
-						title: "Improved json parsing speed",
-						desc: `Instead of using reflection, implemented code generation which improved the parsing performance.`
-					},
-
-				];
-				let workRendered = "";
-				work.forEach(x => {
-					const rendered = `
+            {
+              title: "Created useful debug tools",
+              desc: `Implemented tools for searching missing components/references which resulted in early detection of bugs.`
+            },
+            {
+              title: "Automated resetting backend environment",
+              desc:
+                "I have created tool that was updating backend environment code, resetting and creating database, running all necessary migrations etc. and resulted in reducing time necessary to do this task from 15 minutes to 1 minute."
+            }
+          ];
+          let workRendered = "";
+          work.forEach(x => {
+            const rendered = `
 					<p><strong>${x.title}</strong></p>
 					<p>${x.desc}</p>
 					<br>
 					`;
-					workRendered += rendered;
-				});
-				var list = [
-					{
-						id: "poland",
-						img: "top.jpg",
-						title: "About Me",
-						desc: `
+            workRendered += rendered;
+          });
+          var list = [
+            {
+              id: "poland",
+              img: "top.jpg",
+              title: "About Me",
+              desc: `
 						My name is Jaroslaw Weber, and I’m a developer from Poland with 5 years of experience in mobile game development. 
 						I have worked on games being played by over 80 000 users. 
 						I was one of the main developer and am often being assigned to implementing new features from scratch.
@@ -142,157 +148,154 @@ I have implemented optimization (in one part of the game) that resulted in about
 <br><br>
 						Last few years I spend in Asia, working both on my programming and language skills.
 Currently living in Tokyo and working at DMM GAMES.
-						Found more about me below and contact me if you are interested. You can contact me in English, Japanese or Polish since I can speak those 3 languages fluently.`,
-
-
-					},
-					{
-						id: "unity",
-						img: "unity.jpg",
-						title: "Unity3D",
-						desc: `My main job is developing mobile and browser games using C# and
-					Unity3D engine. `
-
-					},
-					{
-						id: "workplace",
-						img: "dmm.png",
-						title: "DMM GAMES",
-						desc: `I am currently working at DMM GAMES.`,
-						more: `<a href="https://games.dmm.com/en/">> official website.</a>`
-					},
-					{
-						id: "circlet",
-						img: "circlet.jpg",
-						title: "Circlet Princess",
-						desc: `My previous project was a social game called Circlet Princess. Along with game, an animation starring game characters was also released. Currently, over 80 000 users is playing the game.`,
-						more: `
+						Found more about me below and contact me if you are interested. You can contact me in English, Japanese or Polish since I can speak those 3 languages fluently.`
+            },
+            {
+              id: "circlet",
+              img: "circlet.jpg",
+              title: "Circlet Princess",
+              desc: `My previous project was a social game called Circlet Princess. Along with game, an animation starring game characters was also released. Currently, over 80 000 users is playing the game.`,
+              more: `
 						<a href="http://games.dmm.com/en/detail/circlet_princess/">> game</a>
 						<br><br>
 						<a href="https://cirpri-anime.jp/">> anime</a>
 						`
+            },
+            {
+              id: "growth.jpg",
+              img: "growth.jpg",
+              title: "Work",
+              desc: `I have improved both performance and reliability in my work projects. Click on icon below to see more details`,
+              links: [],
+              hideMore: false,
+              more: workRendered
+            },
 
-					},
-					{
-						id: "achilles",
-						img: "achilles.jpg",
-						title: "Soukou Musume",
-						desc: `Game I am currently working at. It is in development, but release is planned for next year.`,
-						more: `
-						<a href="http://games.dmm.com/en/detail/soukou/">> game (not available yet)</a>
-						`
-
-					},
-					{
-						id: "japan",
-						img: "japan.jpg",
-						title: "Japanese",
-						desc: `Most of my adult life, I've lived in Asia, mostly Japan. I started learning Japanese about seven years ago and can fluently conduct a business conversation.`
-					},
-					{
-						id: "library",
-						img: "library.jpg",
-						title: "Scholarship",
-						desc: `One of my achievements was a 1-year MEXT scholarship at the Tohoku University `,
-						more: `<a href="https://en.wikipedia.org/wiki/Monbukagakusho_Scholarship">> about the scholarship</a>`
-					},
-					{
-						id: "certificate",
-						img: "certificate.jpg",
-						title: "Certificates",
-						desc: `I consider myself ambitious person and always pursue new knowledge. I have obtained multiple certificates related to my field. Click button below to see more details.`,
-						more: `my certificates:
+            {
+              id: "certificate",
+              img: "certificate.jpg",
+              title: "Certificates",
+              desc: `I consider myself ambitious person and always pursue new knowledge. I have obtained multiple certificates related to my field. Click button below to see more details.`,
+              more: `my certificates:
 					<br><a href="https://www.coursera.org/account/accomplishments/records/NJ8U878PSCNC">> The Bits and Bytes of Computer Networking by Google</a>
 					<br><a href="https://www.coursera.org/account/accomplishments/records/GM67L3EFZ69S">> Google Cloud Platform Fundamentals: Core Infrastructure by Google</a>
 					<br><a href="https://www.coursera.org/account/accomplishments/records/2HWBSWNEZ7TM">> Introduction to User Experience Principles and Processes by University of Michigan</a>`
-					},
-					{
-						id: "webdev",
-						img: "vue.jpg",
-						title: "Web Dev",
-						desc: `Seeking skills outside of my specialization is something that I consider important to progress my career. I have used Vue to develop few tools in my spare time.`,
-						links: [],
-						more: `
+            },
+
+            {
+              id: "unity",
+              img: "unity.jpg",
+              title: "Unity3D",
+              desc: `My main job is developing mobile and browser games using C# and
+					Unity3D engine. `
+            },
+            {
+              id: "workplace",
+              img: "dmm.png",
+              title: "DMM GAMES",
+              desc: `I am currently working at DMM GAMES.`,
+              more: `<a href="https://games.dmm.com/en/">> official website.</a>`
+            },
+            {
+              id: "achilles",
+              img: "achilles.jpg",
+              title: "Soukou Musume",
+              desc: `Game I am currently working at. It is in development, but release is planned for next year.`,
+              more: `
+						<a href="http://games.dmm.com/en/detail/soukou/">> game (not available yet)</a>
+						`
+            },
+            {
+              id: "japan",
+              img: "japan.jpg",
+              title: "Japanese",
+              desc: `Most of my adult life, I've lived in Asia, mostly Japan. I started learning Japanese about seven years ago and can fluently conduct a business conversation.`
+            },
+            {
+              id: "library",
+              img: "library.jpg",
+              title: "Scholarship",
+              desc: `One of my achievements was a 1-year MEXT scholarship at the Tohoku University `,
+              more: `<a href="https://en.wikipedia.org/wiki/Monbukagakusho_Scholarship">> about the scholarship</a>`
+            },
+            {
+              id: "webdev",
+              img: "vue.jpg",
+              title: "Web Dev",
+              desc: `Seeking skills outside of my specialization is something that I consider important to progress my career. I have used Vue to develop few tools in my spare time.`,
+              links: [],
+              more: `
 						<a href="https://fishlang.github.io/">> project: language learning website</a>
 						<br><br>
 						<a href="https://jaroslaw-weber.github.io/gobofjs/">> project: positional tracking in browser, using computer vision</a>
 						<br><br>
 						<a href="https://jaroslaw-weber.gitlab.io/qq/">> project: bubble tea shop</a>
 						`
-					},
-					{
-						id: "growth.jpg",
-						img: "growth.jpg",
-						title: "Work",
-						desc: `I have improved both performance and reliability in my work projects. Click on icon below to see more details`,
-						links: [],
-						hideMore: true,
-						more: workRendered
+            },
+            {
+              id: "opensource",
+              img: "github.jpg",
+              title: "Open Source",
+              desc: `I am interested in technology and pursue new knowledge at all times. On my own, I created a few small projects and contributed to a few open source projects. I respect the OS community because it has provided great tools for developers, such as VS Code or Tensorflow. `,
+              more:
+                "<a href='https://github.com/jaroslaw-weber/'>> github profile</a>"
+            },
+            {
+              id: "blog",
+              img: "notes.jpg",
+              title: "Technical Blog",
+              desc: `I created a technical blog to summarize what I learned when working on my side projects or in my day-to-day work. I also focus on sharing knowledge with my colleagues, creating technical knowledge documentation and thus enhancing the skills of the entire team.`,
+              links: [],
 
-
-					},
-					{
-						id: "opensource",
-						img: "github.jpg",
-						title: "Open Source",
-						desc: `I am interested in technology and pursue new knowledge at all times. On my own, I created a few small projects and contributed to a few open source projects. I respect the OS community because it has provided great tools for developers, such as VS Code or Tensorflow. `,
-						more: "<a href='https://github.com/jaroslaw-weber/'>> github profile</a>"
-					},
-					{
-						id: "blog",
-						img: "notes.jpg",
-						title: "Technical Blog",
-						desc: `I created a technical blog to summarize what I learned when working on my side projects or in my day-to-day work. I also focus on sharing knowledge with my colleagues, creating technical knowledge documentation and thus enhancing the skills of the entire team.`,
-						links: [],
-
-						more: "<a href='https://jaroslaw-weber.github.io/blog/'>> blog</a>"
-					},
-					{
-						id: "vr",
-						img: "vr.jpg",
-						title: "Virtual Reality",
-						desc: `I developed positional tracking in browser (for use with mobile VR headsets). To achieve low latency and high performance, I used Open CV and Web assembly. I also recently bought an Oculus Go, mobile VR headset. `,
-						more: `<a href="https://jaroslaw-weber.github.io/gobofjs/">> positional tracking in browser, using computer vision</a>`
-					},
-					{
-						id: "robot",
-						img: "robot.jpg",
-						title: "Machine Learning",
-						desc: `I have always been interested in future technologies and in some hobby projects I have even used machine learning. I have a basic knowledge about practical use of tensorfow, machine learning in cloud, data analysis in python. `,
-						links: [],
-						more: `<a href='https://github.com/jaroslaw-weber/hotdog-not-hotdog'>> image recognition with simple web interface</a><br><br>
+              more:
+                "<a href='https://jaroslaw-weber.github.io/blog/'>> blog</a>"
+            },
+            {
+              id: "vr",
+              img: "vr.jpg",
+              title: "Virtual Reality",
+              desc: `I developed positional tracking in browser (for use with mobile VR headsets). To achieve low latency and high performance, I used Open CV and Web assembly. I also recently bought an Oculus Go, mobile VR headset. `,
+              more: `<a href="https://jaroslaw-weber.github.io/gobofjs/">> positional tracking in browser, using computer vision</a>`
+            },
+            {
+              id: "robot",
+              img: "robot.jpg",
+              title: "Machine Learning",
+              desc: `I have always been interested in future technologies and in some hobby projects I have even used machine learning. I have a basic knowledge about practical use of tensorfow, machine learning in cloud, data analysis in python. `,
+              links: [],
+              more: `<a href='https://github.com/jaroslaw-weber/hotdog-not-hotdog'>> image recognition with simple web interface</a><br><br>
 						<a href='https://github.com/jaroslaw-weber/photo2stereo'>> converting 2d images to stereo 3d images</a>
 						
 						`
-					},
-					{
-						id: "handshake",
-						img: "handshake.jpg",
-						title: "Contact",
-						desc: `Contact me by email if you are interested in my skills and experience in more detail <br><br> <a href="mailto:jaroslawweber@gmail.com">jaroslawweber@gmail.com</a>`,
-						links: []
-					},
-					{
-						id: "english",
-						img: "english.jpg",
-						title: "English",
-						desc: `TOEIC certification score: 98%`,
-						links: []
-					},
-				];
-				var circle = Vue.component('circlet', {
-					props: ["item"],
-					data: function () {
-						return {
-							moreVisible: true
-						}
-					},
-					mounted: function () {
-						if (this.item.hideMore) {
-							this.moreVisible = false;
-						}
-					},
-					template: `
+            },
+            {
+              id: "handshake",
+              img: "handshake.jpg",
+              title: "Contact",
+              desc: `Contact me by email if you are interested in my skills and experience in more detail <br><br> <a href="mailto:jaroslawweber@gmail.com">jaroslawweber@gmail.com</a>`,
+              links: []
+            },
+            {
+              id: "english",
+              img: "english.jpg",
+              title: "English",
+              desc: `TOEIC certification score: 98%`,
+              links: []
+            }
+          ];
+          var circle = Vue.component("circlet", {
+            props: ["item"],
+            data: function() {
+              return {
+                moreVisible: true
+              };
+            },
+            mounted: function() {
+              if (this.item.hideMore) {
+                this.moreVisible = false;
+              }
+            },
+            template: `
 					
 
 <div class="one-item columns">
@@ -320,21 +323,18 @@ Currently living in Tokyo and working at DMM GAMES.
 		</div>
 	</div>
 </div>`
-				});
-				var app = new Vue({
-					el: '#app',
-					data: {
-						list: list
-
-					},
-					mounted() {
-						AOS.init();
-					}
-				});
-			</script>
-
-		</div>
-	</section>
-</body>
-
+          });
+          var app = new Vue({
+            el: "#app",
+            data: {
+              list: list
+            },
+            mounted() {
+              AOS.init();
+            }
+          });
+        </script>
+      </div>
+    </section>
+  </body>
 </html>
