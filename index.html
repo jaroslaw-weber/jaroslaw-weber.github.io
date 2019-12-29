@@ -97,11 +97,7 @@
             },
             {
               title: "Added remote error reporting",
-              desc: `After adding detailed error reporting my team was able to fix all major bugs before release.`
-            },
-            {
-              title: "Improving overall system reliabilty",
-              desc: `I improved system stability by implementing few helper extension methods. C# main pain points are Null Exception and Out of Range exceptions. I borrowed few concepts from Rust (iterating, options) and implemented similar functions in C#. In result, code became more reliable, and in lot of cases shorter and easier to read. For example, I implemented .IterateWithIndex function, which is similar to foreach loop but with additional index passing. It is safer than for loop and easier to write.`
+              desc: `After adding detailed error reporting my team was able to early detect and fix all major bugs before release.`
             },
             {
               title: "Wrote network error handling system",
@@ -120,6 +116,12 @@
               title: "Automated resetting backend environment",
               desc:
                 "I have created tool that was updating backend environment code, resetting and creating database, running all necessary migrations etc. and resulted in reducing time necessary to do this task from 15 minutes to 1 minute."
+            },
+
+            {
+              title: "Improving overall system reliabilty",
+              desc:
+                "By adding functions such as IterateWithIndex or NullCheckAction, I was able to reduce frequency of Out Of Range and Null Exception."
             }
           ];
           let workRendered = "";
