@@ -76,11 +76,9 @@
 			this<a href="https://unsplash.com/collections/4790202/portfolio">Unsplash Collection</a>.
 
 			<script>
-				let work = [
-					{
+				let work = [{
 						title: "Popular mobile game",
-						desc:
-							"Released a game which have currently over 80 000 daily active users."
+						desc: "Released a game which have currently over 80 000 daily active users."
 					},
 					{
 						title: "Decrease bundle size",
@@ -88,8 +86,7 @@
 					},
 					{
 						title: "Improved performance - sorting algorithm",
-						desc:
-							"The game I was working on had a performance issue which caused screen freezing for few seconds when opened. After some debugging, I have discovered that sorting algorithm was parsing same dates multiple times. By caching parsing result, the loading times decreased from few seconds to miliseconds."
+						desc: "The game I was working on had a performance issue which caused screen freezing for few seconds when opened. After some debugging, I have discovered that sorting algorithm was parsing same dates multiple times. By caching parsing result, the loading times decreased from few seconds to miliseconds."
 					},
 					{
 						title: "Improved performance by replacing clone method",
@@ -114,14 +111,12 @@
 					},
 					{
 						title: "Automated resetting backend environment",
-						desc:
-							"I have created tool that was updating backend environment code, resetting and creating database, running all necessary migrations etc. and resulted in reducing time necessary to do this task from 15 minutes to 1 minute."
+						desc: "I have created tool that was updating backend environment code, resetting and creating database, running all necessary migrations etc. and resulted in reducing time necessary to do this task from 15 minutes to 1 minute."
 					},
 
 					{
 						title: "Improved overall system reliabilty",
-						desc:
-							"By adding functions such as IterateWithIndex or NullCheckAction, I was able to reduce frequency of Out Of Range and Null Exception."
+						desc: "By adding functions such as IterateWithIndex or NullCheckAction, I was able to reduce frequency of Out Of Range and Null Exception."
 					},
 					{
 						title: "Added automated testing suite",
@@ -138,8 +133,7 @@
 
 					workRendered += rendered;
 				});
-				var list = [
-					{
+				var list = [{
 						id: "poland",
 						img: "top.jpg",
 						title: "About Me",
@@ -158,36 +152,48 @@ Currently living in Tokyo and working at DMM GAMES.
 						Found more about me below and contact me if you are interested. You can contact me in English, Japanese or Polish since I can speak those 3 languages fluently.`
 					},
 					{
-						id: "circlet",
-						img: "circlet.jpg",
-						title: "Circlet Princess",
-						desc: `My previous project was a social game called Circlet Princess. Along with game, an animation starring game characters was also released. It has over 80 000 active users. Here is a video of the gameplay:`,
-						video: `https://www.youtube.com/embed/x3NJ1l4dac0`,
-						more: `
-						<a href="http://games.dmm.com/en/detail/circlet_princess/">> game</a>
-						<br><br>
-						<a href="https://cirpri-anime.jp/">> anime</a>
-						`
-					},
-					{
 						id: "achilles",
 						img: "achilles.jpg",
 						title: "Soukou Musume",
 						desc: `Game I am currently working on. Here is the video of the gameplay:`,
 						video: `https://www.youtube.com/embed/rm5eAZM0QWk`,
 						more: `
-						<a href="http://games.dmm.com/en/detail/soukou/">> game</a>
+						<a href="http://games.dmm.com/en/detail/soukou/" target="_blank">> game</a>
 						`
 
+					},
+					{
+						id: "circlet",
+						img: "circlet.jpg",
+						title: "Circlet Princess",
+						desc: `My previous project was a social game called Circlet Princess. Along with game, an animation starring game characters was also released. It has over 80 000 active users. Here is a video of the gameplay:`,
+						video: `https://www.youtube.com/embed/x3NJ1l4dac0`,
+						more: `
+						<a href="http://games.dmm.com/en/detail/circlet_princess/" target="_blank">> game</a>
+						<br><br>
+						<a href="https://www.youtube.com/watch?v=Gxm2rE_lpes" target="_blank">> anime</a>
+						`
+					},
+					{
+						id: "bearlang",
+						img: "bearlang.png",
+						title: "bearlang",
+						desc: `Language learning web app I made. Creating bilingual text in browser.<br>
+						Technology I used: Vue.js, tailwind-css, stripe payments, google/facebook authorization and severless backend (google cloud).`,
+						links: [""],
+						more: `
+						<a href="https://bearlang.app" target="_blank">> bearlang app</a>
+						`
 					},
 					{
 						id: "webdev",
 						img: "vue.jpg",
 						title: "Web Dev",
-						desc: `I have experience with webdev front-end. Click link below to see the code of the example website I have made with Vue.js.`,
+						desc: `Front-end projects I worked on:`,
 						links: [],
 						more: `
-						<a href="https://github.com/jaroslaw-weber/crud-front-end-vue-js">> project: recipes website made with vue.js</a>
+						<a href="https://chezsoi.netlify.app/" target="_blank">> mockup restaurant landing page made with vue.js and tailwind</a>
+						<br>
 						`
 					},
 					{
@@ -246,8 +252,7 @@ Currently living in Tokyo and working at DMM GAMES.
 						img: "github.jpg",
 						title: "Open Source",
 						desc: `I am interested in technology and pursue new knowledge at all times. On my own, I created a few small projects and contributed to a few open source projects. I respect the OS community because it has provided great tools for developers, such as VS Code or Tensorflow. `,
-						more:
-							"<a href='https://github.com/jaroslaw-weber/'>> github profile</a>"
+						more: "<a href='https://github.com/jaroslaw-weber/'>> github profile</a>"
 					},
 					{
 						id: "blog",
@@ -256,8 +261,7 @@ Currently living in Tokyo and working at DMM GAMES.
 						desc: `I created a technical blog to summarize what I learned when working on my side projects or in my day-to-day work. I also focus on sharing knowledge with my colleagues, creating technical knowledge documentation and thus enhancing the skills of the entire team.`,
 						links: [],
 
-						more:
-							"<a href='https://jaroslaw-weber.github.io/blog/'>> blog</a>"
+						more: "<a href='https://jaroslaw-weber.github.io/blog/'>> blog</a>"
 					},
 					{
 						id: "vr",
